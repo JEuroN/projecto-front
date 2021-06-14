@@ -1,38 +1,73 @@
 .App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center{
   display: flex;
+  align-content: center;
+  justify-content: center;
+}
+  
+.resize{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.center-div{
+  display: flex;
+  align-content: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.product-divs{
+  padding: 0 10px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-div button{
+  margin: 15px 15px 0 ;
+  min-width: 170px;
+  min-height: 40px;
 }
+
+.button-div p{
+  margin-top: 15px;
+}
+
+.table-div{
+  overflow: auto;
+  height: 83vh;
+  font-size: 0.8em;
+}
+
+.div-header{
+  height: 10vh;
+}
+
+.div-btn{
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.div-btn button{
+  min-width: 25vw;
+}
+  .reduce{
+    width: 80vw;
+  }
+

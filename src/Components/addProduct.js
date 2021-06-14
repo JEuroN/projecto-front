@@ -57,34 +57,48 @@ const AddProduct = () => {
 
 
     return ( 
-        <div>
+        <div className='center-div'>
             <div>
-                <button onClick={()=>{history.push('/product')}}>Volver</button>
-                <button onClick={createProduct}>Crear</button>
+                <button className='btn btn-primary' onClick={()=>{history.push('/product')}}>Volver</button>
+                <button className='btn btn-primary' onClick={createProduct}>Crear</button>
             </div>
-            <div>
-                <span>Titulo: </span><input onChange={(e)=>{setProduct({...product, product_title: e.target.value})}} placeholder='Titulo'></input>
-                <span>Etiqueta: </span><input onChange={(e)=>{setProduct({...product, product_handle: e.target.value})}}placeholder='Etiqueta'></input>
+            <div className='reduce'>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_title: e.target.value})}} type="text" value={product.product_title} placeholder="Disabled input" aria-label="Disabled input example" />            
+                <label for="floatingInput">Titulo: </label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_handle: e.target.value})}} type="text" value={product.product_handle} placeholder="Disabled input" aria-label="Disabled input example" />            
+                <label for="floatingInput">Handle: </label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_price: e.target.value})}} type="text" value={product.product_price} placeholder="Disabled input" aria-label="Disabled input example" />            
+                <label for="floatingInput">Precio: </label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_grams: e.target.value})}} type="text" value={product.product_grams} placeholder="Disabled input" aria-label="Disabled input example" />            
+                <label for="floatingInput">Grams: </label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_stock: e.target.value})}} type="text" value={product.product_stock} placeholder="Disabled input" aria-label="Disabled input example" />            
+                <label for="floatingInput">Stock:</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_sku: e.target.value})}} type="text" value={product.product_sku} placeholder="Disabled input" aria-label="Disabled input example"/>            
+                <label for="floatingInput">SKU: </label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_compare_price: e.target.value})}} type="text" value={product.product_compare_price} placeholder="Disabled input" aria-label="Disabled input example" />            
+                <label for="floatingInput">Compare: </label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" onChange={(e)=>{setProduct({...product, product_barcode: e.target.value})}} type="text" value={product.product_barcode} placeholder="Disabled input" aria-label="Disabled input example"/>            
+                <label for="floatingInput">Barcode: </label>
             </div>
             <div>
                 <p><strong>Características:</strong></p>
-                <textarea onChange={(e)=>{setProduct({...product, product_description: e.target.value})}} placeholder='Descripcion'></textarea>
+                <textarea className='form-control' onChange={(e)=>{setProduct({...product, product_description: e.target.value})}} placeholder='Descripcion'></textarea>
             </div>
-            <div>
-                precio:   gramos:   stock:  
-            </div>
-            <div>
-                <input type='number' onChange={(e)=>{setProduct({...product, product_price: e.target.value})}} placeholder='Precio'></input>  
-                <input type='number' onChange={(e)=>{setProduct({...product, product_grams: e.target.value})}} placeholder='Gramos'></input>   
-                <input type='number' onChange={(e)=>{setProduct({...product, product_stock: e.target.value})}} placeholder='Stock'></input>
-            </div>
-            <div>
-                SKU:  Barcode:  Precio en comparacion:
-            </div>
-            <div>
-                <input type='number' onChange={(e)=>{setProduct({...product, product_sku: e.target.value})}} placeholder='SKU'></input>  
-                <input type='number' onChange={(e)=>{setProduct({...product, product_barcode: e.target.value})}} placeholder='Codigo de barras'></input>   
-                <input type='number' onChange={(e)=>{setProduct({...product, product_compare_price: e.target.value})}} placeholder='Precio en comparacion'></input>
             </div>
             {error ? <h2>Se ha producido un error</h2> : null}
         </div>

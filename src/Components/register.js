@@ -3,6 +3,7 @@ import React, {useState, useContext} from "react";
 import { useHistory } from "react-router";
 import { userContext } from "./../Context/userContext";
 import {url} from "./../setURL"
+import '../App.css'
 
 const Register = () => {
 
@@ -28,7 +29,7 @@ const Register = () => {
         })
         .then((r)=>{
             setSession(r.data.msg);
-            history.push('/Products');
+            history.push('/');
         })
         .catch((err)=>{
             console.log(err);
@@ -36,18 +37,24 @@ const Register = () => {
     }
 
     return ( 
-        <div>
-            <div>
+            <div className='container-fluid resize'>
                 <h1>Tienda Libre!</h1>
                 <p>Ingrese los siguientes datos!</p>
-                <input onChange={(e)=>{setUsername(e.target.value)}} placeholder='Usuario'></input>
-                <input type='password' onChange={(e)=>{setPassword(e.target.value)}} placeholder='Contraseña'></input>
-                <input onChange={(e)=>{setNombre(e.target.value)}} placeholder='Nombre'></input>
-                <input onChange={(e)=>{setApellido(e.target.value)}} placeholder='Apellido'></input>
-                <button onClick={()=>{registerUser()}}>Registrarse</button>
-                <button onClick={()=>{history.push('/')}}>Volver</button>
+                <div className='center-div'>
+                    <label for="username" className="form-label">Usuario</label>
+                    <input id='username' className='form-control' onChange={(e)=>{setUsername(e.target.value)}} placeholder='Usuario'></input>
+                    <label for="password" className="form-label">Contraseña</label>
+                    <input id='password'className='form-control' type='password' onChange={(e)=>{setPassword(e.target.value)}} placeholder='Contraseña'></input>
+                    <label for="nombre" className="form-label">Nombre</label>
+                    <input id='nombre' className='form-control' onChange={(e)=>{setNombre(e.target.value)}} placeholder='Nombre'></input>
+                    <label for="apellido" className="form-label">Apellido</label>
+                    <input id='apellido' className='form-control' onChange={(e)=>{setApellido(e.target.value)}} placeholder='Apellido'></input>
+                </div>
+                <div className='button-div'>
+                    <button className='btn btn-primary' onClick={()=>{registerUser()}}>Registrarse</button>
+                    <button className='btn btn-primary' onClick={()=>{history.push('/')}}>Volver</button>
+                </div>
             </div>
-        </div>
      );
 }
  

@@ -3,6 +3,7 @@ import { userContext } from "../Context/userContext";
 import { useHistory } from "react-router";
 import axios from 'axios';
 import {url} from './../setURL'
+import '../App.css'
 
 const Products = () => {
 
@@ -49,16 +50,20 @@ const Products = () => {
         const {product_title, product_stock, product_price, product_barcode, product_id} = item;
         
         return(
-        <div key={product_id} onClick={()=>{seeProduct(product_id)}}>
-            <div>
-                <h1>{product_title}</h1>
-            </div>
-            <div>
-                Stock: {product_stock} -
-                Precio: {product_price} -
-                Codigo de barra: {product_barcode}
-            </div>
-        </div>
+        <tr key={product_id} onClick={()=>{seeProduct(product_id)}}>
+            <td>
+                {product_barcode}
+            </td>
+            <td>
+                {product_title}
+            </td>
+            <td>
+                {product_stock}
+            </td>
+            <td>
+                {product_price}
+            </td>
+        </tr>
         )
     })
 
@@ -67,29 +72,51 @@ const Products = () => {
         
         if(product_title.toLowerCase().includes(filter.toLowerCase())){
             return(
-            <div key={product_id} onClick={()=>{seeProduct(product_id)}}>
-                <div>
-                    <h1>{product_title}</h1>
-                </div>
-                <div>
-                    Stock: {product_stock} -
-                    Precio: {product_price} -
-                    Codigo de barra: {product_barcode}
-                </div>
-            </div>
+            <tr key={product_id} onClick={()=>{seeProduct(product_id)}}>
+                <td>
+                    {product_barcode}
+                </td>
+                <td>
+                    {product_title}
+                </td>
+                <td>
+                    {product_stock}
+                </td>
+                <td>
+                    {product_price}
+                </td>
+            </tr>
             )
         }else {return null}
     })
 
     return ( 
         <div>
-            <div>
-                <button onClick={()=>{history.push('/')}}>Volver</button>
-                <input placeholder='Buscar por nombre' onChange={(e)=>{setFilter(e.target.value)}}></input>
-                <button onClick={()=>{history.push('/create')}}>Añadir un producto</button>
+            <nav className="navbar navbar-light bg-light">
+                <div className="container-fluid center">
+                    <form className="d-flex">
+                    <input onChange={(e)=>{setFilter(e.target.value)}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    </form>
+                </div>
+            </nav>
+            <div className='table-div'>
+                <table className='table table-striped'>
+                <thead>
+                    <tr>
+                        <th scope="col">Bar</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filter.length < 1 ? productRows : search}
+                </tbody>
+                </table>
             </div>
-            <div>
-                {filter.length < 1 ? productRows : search}
+            <div className='div-btn'>
+                <button className='btn btn-primary' onClick={()=>{history.push('/')}}>Volver</button>
+                <button className='btn btn-primary' onClick={()=>{history.push('/create')}}>Añadir un producto</button>
             </div>
         </div>
      );

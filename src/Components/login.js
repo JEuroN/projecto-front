@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router';
 import {url} from '../setURL'
 import { userContext } from '../Context/userContext';
+import '../App.css'
 
 const Login = () => {
 
@@ -44,15 +45,21 @@ const Login = () => {
     
     return ( 
         <div>
-            <div>
+            <div className='container-fluid resize'>
                 <h1>Tienda libre!</h1>
                 <p>Ingresa tus datos para ingresar!</p>
-                <input placeholder='Usuario' onChange={(e)=>{setUsername(e.target.value)}}></input>
-                <input placeholder='Contraseña' type='password' onChange={(e)=>{setPassword(e.target.value)}}></input>
-                <button onClick={login}>Ingresar</button>
-                <button onClick={()=>{history.push('/registro')}}>Registro</button>
-                <button onClick={()=>{history.push('/recuperar')}}>Olvide mi contraseña</button>
-                {error ? <p>Contraseña incorrecta</p> : null }
+                <div className='center-div'>
+                    <label for="username" className="form-label">Usuario</label>
+                    <input className="form-control" id='username' placeholder='Usuario' onChange={(e)=>{setUsername(e.target.value)}}></input>
+                    <label for="password" className="form-label">Contraseña</label>
+                    <input className="form-control" id='password' placeholder='Contraseña' type='password' onChange={(e)=>{setPassword(e.target.value)}}></input>
+                </div>
+                <div className='button-div'>
+                    <button className='btn btn-primary' onClick={login}>Ingresar</button>
+                    <p onClick={()=>{history.push('/registro')}}>Registro</p>
+                    <p onClick={()=>{history.push('/recuperar')}}>Olvide mi contraseña</p>
+                    {error ? <p>Contraseña incorrecta</p> : null }
+                </div>
             </div>
         </div>
      );

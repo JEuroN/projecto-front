@@ -89,57 +89,87 @@ const ProductInformation = () => {
 
     return ( 
         <div>
-            <button onClick={()=>{history.push('/product')}}>Volver</button>
-            <button onClick={()=>{eliminar()}}>Eliminar</button>
-            <button onClick={()=>{setIsOpen(!isOpen)}}>Actualizar</button>
             <div>
-                <h1>{producto.product_title}</h1>
-                <h2>{producto.product_handle}</h2>
+                <h2>{producto.product_title}</h2>
+                <h3>{producto.product_handle}</h3>
+            </div>
+            <div className="form-floating">
+                <input className="form-control  no-padding" type="text" value={producto.product_price} placeholder="Disabled input" aria-label="Disabled input example" disabled />            
+                <label for="floatingInput">Precio: </label>
+            </div>
+            <div className="form-floating">
+                <input className="form-control" type="text" value={producto.product_grams} placeholder="Disabled input" aria-label="Disabled input example" disabled />            
+                <label for="floatingInput">Grams: </label>
+            </div>
+            <div className="form-floating">
+                <input className="form-control" type="text" value={producto.product_stock} placeholder="Disabled input" aria-label="Disabled input example" disabled />            
+                <label for="floatingInput">Stock:</label>
+            </div>
+            <div className="form-floating">
+                <input className="form-control" type="text" value={producto.product_sku} placeholder="Disabled input" aria-label="Disabled input example" disabled />            
+                <label for="floatingInput">SKU: </label>
+            </div>
+            <div className="form-floating">
+                <input className="form-control" type="text" value={producto.product_compare_price} placeholder="Disabled input" aria-label="Disabled input example" disabled />            
+                <label for="floatingInput">Compare: </label>
+            </div>
+            <div className="form-floating">
+                <input className="form-control" type="text" value={producto.product_barcode} placeholder="Disabled input" aria-label="Disabled input example" disabled />            
+                <label for="floatingInput">Barcode: </label>
             </div>
             <div>
                 {producto.product_description}
             </div>
-            <div>
-                precio:  -  gramos:  -  stock:  
-            </div>
-            <div>
-                {producto.product_price}  -  {producto.product_grams}  -  {producto.product_stock}
-            </div>
-            <div>
-                SKU:  -  Barcode:  -  Precio en comparacion:
-            </div>
-            <div>
-                {producto.product_sku}  -  {producto.product_barcode}  -  {producto.product_compare_price}
-            </div>
+
             {error ? <h2>se ha producido un error</h2> : null}
-            <Modal isOpen={isOpen} ariaHideApp={false}>
+
+            <div >
+                <button className='btn btn-primary' onClick={()=>{history.push('/product')}}>Volver</button>
+                <button className='btn btn-primary' onClick={()=>{eliminar()}}>Eliminar</button>
+                <button className='btn btn-primary' onClick={()=>{setIsOpen(!isOpen)}}>Actualizar</button>
+            </div>
+
+            <Modal isOpen={isOpen} ariaHideApp={false} style={{content:{inset: '10px'}}}>
                 <div>
-                    <div>
-                        <button onClick={()=>{setIsOpen(!isOpen)}}>Cerrar</button>
-                        <button onClick={()=>{actualizar()}}>Guardar</button>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_title: e.target.value})}} type="text" value={newProduct.product_title} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">Titulo: </label>
+                    </div>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_handle: e.target.value})}} type="text" value={newProduct.product_handle} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">Handle: </label>
+                    </div>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_price: e.target.value})}} type="text" value={newProduct.product_price} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">Precio: </label>
+                    </div>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_grams: e.target.value})}} type="text" value={newProduct.product_grams} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">Grams: </label>
+                    </div>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_stock: e.target.value})}} type="text" value={newProduct.product_stock} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">Stock: </label>
+                    </div>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_sku: e.target.value})}} type="text" value={newProduct.product_sku} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">SKU: </label>
+                    </div>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_compare_price: e.target.value})}} type="text" value={newProduct.product_compare_price} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">Compare: </label>
+                    </div>
+                    <div className="form-floating">
+                        <input className="form-control" onChange={(e)=>{setNewProduct({...newProduct, product_barcode: e.target.value})}} type="text" value={newProduct.product_barcode} placeholder="Disabled input" aria-label="Disabled input example" />            
+                        <label for="floatingInput">Barcode: </label>
                     </div>
                     <div>
-                        <input onChange={(e)=>{setNewProduct({...newProduct, product_title: e.target.value})}} value={newProduct.product_title}></input>
-                        <input onChange={(e)=>{setNewProduct({...newProduct, product_handle: e.target.value})}} value={newProduct.product_handle}></input>
+                        <p><strong>Características:</strong></p>
+                        <textarea className='form-control' onChange={(e)=>{setNewProduct({...newProduct, product_description: e.target.value})}} value={newProduct.product_description} placeholder='Descripcion'></textarea>
                     </div>
                     <div>
-                        <textarea onChange={(e)=>{setNewProduct({...newProduct, product_description: e.target.value})}} value={newProduct.product_description}></textarea>
-                    </div>
-                    <div>
-                        precio:   gramos:   stock:  
-                    </div>
-                    <div>
-                        <input type='number' onChange={(e)=>{setNewProduct({...newProduct, product_price: e.target.value})}} value={newProduct.product_price}></input>  
-                        <input type='number' onChange={(e)=>{setNewProduct({...newProduct, product_grams: e.target.value})}} value={newProduct.product_grams}></input>   
-                        <input type='number' onChange={(e)=>{setNewProduct({...newProduct, product_stock: e.target.value})}} value={newProduct.product_stock}></input>
-                    </div>
-                    <div>
-                        SKU:   Barcode:   Precio en comparacion:
-                    </div>
-                    <div>
-                        <input type='number' onChange={(e)=>{setNewProduct({...newProduct, product_sku: e.target.value})}} value={newProduct.product_sku}></input>   
-                        <input type='number' onChange={(e)=>{setNewProduct({...newProduct, product_barcode: e.target.value})}} value={newProduct.product_barcode}></input>
-                        <input type='number' onChange={(e)=>{setNewProduct({...newProduct, product_compare_price: e.target.value})}} value={newProduct.product_compare_price}></input>
+                        <button className='btn btn-primary' onClick={()=>{setIsOpen(!isOpen)}}>Cerrar</button>
+                        <button className='btn btn-primary' onClick={()=>{actualizar()}}>Guardar</button>
                     </div>
                 </div>
             </Modal>
