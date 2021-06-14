@@ -14,11 +14,11 @@ function App() {
       <UserProvider>
         <BrowserRouter >
           <Route exact path='/' component={Login} />
-          <Route exact path='/Registro' component={Register} />
+          <Route exact path='/registro' component={Register} />
           <Route exact path='/product' component={Products} />
           <Route exact path='/recuperar' component={Recuperar} />
           <Route exact path ='/product/:id' component={ProductInformation} />
-          <Route exact path ='/product/create' component={AddProduct} />
+          <Route exact path ='/create' component={AddProduct} />
         </BrowserRouter>
       </UserProvider>
     </div>

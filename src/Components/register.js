@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, {useState, useContext} from "react";
-import Axios from 'react';
 import { useHistory } from "react-router";
 import { userContext } from "./../Context/userContext";
 import {url} from "./../setURL"
@@ -42,7 +41,7 @@ const Register = () => {
                 <h1>Tienda Libre!</h1>
                 <p>Ingrese los siguientes datos!</p>
                 <input onChange={(e)=>{setUsername(e.target.value)}} placeholder='Usuario'></input>
-                <input onChange={(e)=>{setPassword(e.target.value)}} placeholder='Contraseña'></input>
+                <input type='password' onChange={(e)=>{setPassword(e.target.value)}} placeholder='Contraseña'></input>
                 <input onChange={(e)=>{setNombre(e.target.value)}} placeholder='Nombre'></input>
                 <input onChange={(e)=>{setApellido(e.target.value)}} placeholder='Apellido'></input>
                 <button onClick={()=>{registerUser()}}>Registrarse</button>

@@ -34,7 +34,7 @@ const Login = () => {
         })
         .then((r)=>{
             setSession(r.data.msg);
-            history.push('/Product');
+            history.push('/product');
         })
         .catch((err)=>{
             console.log(err);
@@ -47,11 +47,11 @@ const Login = () => {
             <div>
                 <h1>Tienda libre!</h1>
                 <p>Ingresa tus datos para ingresar!</p>
-                <input onChange={(e)=>{setUsername(e.target.value)}}></input>
-                <input onChange={(e)=>{setPassword(e.target.value)}}></input>
+                <input placeholder='Usuario' onChange={(e)=>{setUsername(e.target.value)}}></input>
+                <input placeholder='Contraseña' type='password' onChange={(e)=>{setPassword(e.target.value)}}></input>
                 <button onClick={login}>Ingresar</button>
-                <button onClick={()=>{history.push('/Registro')}}>Registro</button>
-                <button onClick={()=>{history.push('/Recuperar')}}>Olvide mi contraseña</button>
+                <button onClick={()=>{history.push('/registro')}}>Registro</button>
+                <button onClick={()=>{history.push('/recuperar')}}>Olvide mi contraseña</button>
                 {error ? <p>Contraseña incorrecta</p> : null }
             </div>
         </div>

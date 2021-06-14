@@ -86,7 +86,7 @@ const Products = () => {
             <div>
                 <button onClick={()=>{history.push('/')}}>Volver</button>
                 <input placeholder='Buscar por nombre' onChange={(e)=>{setFilter(e.target.value)}}></input>
-                <button onClick={()=>{history.push('/product/create')}}>Crear</button>
+                <button onClick={()=>{history.push('/create')}}>Añadir un producto</button>
             </div>
             <div>
                 {filter.length < 1 ? productRows : search}
